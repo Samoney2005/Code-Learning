@@ -7,4 +7,4 @@ w = Label(root, text = "GUI")
 # connect the label to the window object "root in our case"
 w.pack()
 # keeps window open
-window.mainloop()
+root.mainloop()
