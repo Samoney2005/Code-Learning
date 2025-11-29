@@ -8,4 +8,4 @@ entry1 = Entry(root)
 entry1.pack(pady=20)
 
 # keeps window open
-window.mainloop()
+root.mainloop()
