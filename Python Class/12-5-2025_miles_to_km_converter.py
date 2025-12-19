@@ -7,12 +7,16 @@ conver.geometry("400x400")
 
 # have a def for the button
 def when_click():
-    distan = entry_main.get()
-    label.config({distan})
+    distan = int(entry_main.get())
+    result_in_km = distan*1.609
+    label1.config(text=f'{result_in_km}')
+    #label1.config({distan})
+
+
 
 # label creation
-label = Label(conver, text="")
-label.grid(row = 1, column = 2)
+label1 = Label(conver, text="")
+label1.grid(row = 1, column = 2)
 
 # entry creation
 # entry is not equal to the kilometers calculation
@@ -21,13 +25,15 @@ entry_main.grid(row = 0, column = 2)
 
 # calculation formula and rules
 # formula: Distance in kilometers = Distance in miles × 1.609344
+
+'''
 i = 1.609344
 while entry_main == label:
     form =  en * i
     print(form)
 else:
     print("Error")
-
+'''
 
 
 
