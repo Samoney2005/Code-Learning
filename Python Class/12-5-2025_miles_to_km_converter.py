@@ -48,7 +48,7 @@ button.grid(row = 2, column = 2)
 miles = Label(conver,text = "Miles")
 equal = Label(conver,text = "is equal to")
 km = Label(conver,text = "Km")
-press = Label(conver,text = "please press the button above to calculate!")
+press = Label(conver, text = "please press the button above to calculate!")
 
 # label grid for position of the label
 miles.grid(row = 0,column = 3)
