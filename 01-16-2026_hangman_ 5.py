@@ -35,7 +35,6 @@ while True:
 
     print(storage)
 
-
 # create an empty list here and then link it to the storage
 
 
