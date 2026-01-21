@@ -22,16 +22,14 @@ for letter_one in random_words:
 # 4- Compare the players letter to the words letters | letter_two is the storage for the random word chosen
 # Note:  when its right the letter must hold its place in the word
 while True:
-    storage = []
-    under_storage = "_"
+    storage = " "
+    var = ' + '.join(storage)
     guess_attempts = input("Guess a letter:")
     for letter_two in random_words:
         if letter_two == guess_attempts:
-            storage = letter_two + storage
-            storage.append(letter_two)
+            storage = letter_two + var
         else:
-            storage = storage + under_storage
-
+            storage = storage + "_"
     print(storage)
 
 # create an empty list here and then link it to the storage
