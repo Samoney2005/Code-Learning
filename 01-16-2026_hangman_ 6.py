@@ -23,21 +23,30 @@ for letter_one in random_words:
 # 4- Compare the players letter to the words letters | letter_two is the storage for the random word chosen
 # Note:  when its right the letter must hold its place in the word
 found_letters = []
-storage = []
+#storage = " "
 while True:
+
+    #found_letters = []
+    storage = " "
+
     guess_attempts = input("Guess a letter:")
     for letter_two in random_words:
         if letter_two == guess_attempts:
-            storage.append(letter_two)
-        elif letter_two in found_letters:
+            storage += letter_two
             found_letters.append(letter_two)
+            print("letter found", storage)
+        elif letter_two in found_letters:
+            storage += letter_two
+            print("letter already found", storage)
         else:
-            storage.append("_")
-    print(storage)
+            storage += "_"
+            print("letter not found", storage)
+
+    print("storage at the end of the loop", storage)
 
 # 5-create an empty list here and then link it to the storage
-    attach = []
-    attach = storage
+    #attach = []
+    #attach = storage
 
 
 
