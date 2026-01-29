@@ -52,7 +52,7 @@ for letter_two in itertools.cycle(random_words):
    # break # Break statement: immediately exit the loop
 # print(f"value of storage is{storage}")
 
-# still working on this
+# still working on this no worries
 
 
 
