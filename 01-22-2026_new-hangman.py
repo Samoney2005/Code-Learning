@@ -1,5 +1,6 @@
 import random
-import itertools
+import string
+
 
 # Wordbank of Understanding
 # words: This is the list of words we are using
@@ -10,11 +11,17 @@ import itertools
 # storage:  This is where the word/letters will be stored when it is guessed
 # guess_attempts: This is where the user is asked to guess a letter
 # letter_two: The storage for the random words that is chosen
-# found_letters: This is the storage for the found letter so they dont repeat again
+# found_letters: This is the storage for the found letter so they don't repeat again
 
 
-# 1- list with words in variable
+# 1- Lists that are needed
 words = ["Kenya","Germany", "France", "China", "Mexico", "Senegal"]
+valid_inputs = list(string.ascii_letters)
+print(valid_inputs)
+correct_inputs = []
+missed = []
+storage = []
+life_points = 10
 
 # 2- pick a random word from the list
 random_words = random.choice(words)
@@ -30,44 +37,38 @@ print(add_length)
 for letter_one in random_words:
     print(letter_one)
 
-# 4- Compare the players letter to the words letters
-for letter_two in itertools.cycle(random_words):
-    storage = " "
-    found_letters = []
-
+# 4- Start the game loop
+while True:
     # Ask the user to guess a letter
     guess_attempts = input("Guess a letter:")
-
-    # Ask the user to guess a letter
-    if guess_attempts == letter_two and found_letters:
-        storage += letter_two
-        print(f"You have already found letter {guess_attempts}!")
-
-
-        print(storage)
+    # Stop the loop when done guessing
+    if guess_attempts == "done":
+        break
+    # if the letter is not a valid inputs
+    elif guess_attempts not in valid_inputs:
+        print("Error, Sorry that's an invalid input!")
+    # Otherwise, continue with the game
     else:
-        storage += "_"
-        print(f"Incorrect guess, Try again!")
+        # Check if the letter is in the word
+        if guess_attempts in list(random_words):
+            # If yes, put it in the correct position
+            for w in storage:
+                if list(random_words) == guess_attempts:
+                    correct_inputs.append(guess_attempts)
+            if len(correct_inputs) == len(random_words):
+                print("You Win, Great Job you guessed the word!")
+                break
+        else:
+            # If letter not in the word reduce guesses by 1
+            life_points -= 1
+            # Update the number of guesses
+            print(f"guesses left: {life_points}")
+            missed.append(words)
+            # if all 10 guesses are used up
+            if len(missed) == 10:
+                print("Game Over")
+                break
+            # remove the letter from the valid inputs list
+            valid_inputs.remove(guess_attempts)
+            print("Incorrect, Guess Again!")
 
-   # break # Break statement: immediately exit the loop
-# print(f"value of storage is{storage}")
-
-# still working on this no worries
-
-
-
-
-
-
-
-
-
-
-
-
-# 5 - 10 trys and the user gets game over!
-# Note: add the ascii symbols as well for each life when incorrect guess
-#   life_points = life_points - 1  #life_points -= 1
-#         print(f"Remaining Lives:{life_points}")
-#           if life_points == 0:
-#               print("Game Over")
