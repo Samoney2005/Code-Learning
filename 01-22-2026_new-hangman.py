@@ -11,7 +11,7 @@ import string
 # storage:  This is where the word/letters will be stored when it is guessed
 # guess_attempts: This is where the user is asked to guess a letter
 # letter_two: The storage for the random words that is chosen
-# found_letters: This is the storage for the found letter so they don't repeat again
+
 
 
 # 1- Lists that are needed

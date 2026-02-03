@@ -1,8 +1,10 @@
 import random
+import string
+from hangdude import Tom
 from typing import Any
 # 1- list with words in variable
 words = ["Kenya","Germany", "France", "China", "Mexico", "Senegal"]
-
+valid_inputs = list(string.ascii_letters)
 # 2- pick a random word from the list
 # Note: You need to know the length of the word
 random_words = random.choice(words)
@@ -24,11 +26,9 @@ for letter_one in random_words:
 found_letters = []
 life_points = 10
 
-loopy = True
-
-while loopy:
+while True:
     storage = " "
-    print("storage --", storage)
+    # print("storage --", storage)
     print(found_letters)
 # Ask the user to guess a letter
     guess_attempts = input("Guess a letter:")
@@ -41,10 +41,6 @@ while loopy:
             found_letters.append(letter_two)
 
 
-
-
-
-
         #elif guess_attempts in found_letters:
             #storage += guess_attempts
         elif letter_two in found_letters:
@@ -52,25 +48,22 @@ while loopy:
             # print("letter already found", storage)
 
         else:
-            storage += "_ "
-
-    else:
             storage += "_"
-            life_points = life_points - 1  #life_points -= 1
-            print(f"Remaining Lives:{life_points}")
-            if life_points == 0:
-                print("we are in the break loop")
-                #break
-                loopy = False
+# This is if the guess is not in the word
+    if guess_attempts not in storage:
+            if guess_attempts not in valid_inputs:
+                print("Error, This is not a letter!")
+            else:
+                life_points = life_points - 1  #life_points -= 1
+                print(f"Remaining Lives:{life_points}")
+                print(Tom[0])
+                if life_points == 0:
+                    print("Game Over!")
+                    break
+# This is if You filled all the blanks
+    if "_" not in storage:
+        print("Great Job, You guessed the word!")
+        break
 
             # print("letter not found", storage)
-    print(f"value of staorage is{storage}")
-# 5-create an empty list here and then link it to the storage
-    #attach = []
-    #attach = storage
-
-
-
-
-# 6- life counts will have a limit of 10| limit exceeded print games over!
-
+    print(f"value of storage is{storage}")

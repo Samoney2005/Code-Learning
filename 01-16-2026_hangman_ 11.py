@@ -41,10 +41,6 @@ while loopy:
             found_letters.append(letter_two)
 
 
-
-
-
-
         #elif guess_attempts in found_letters:
             #storage += guess_attempts
         elif letter_two in found_letters:
@@ -54,17 +50,18 @@ while loopy:
         else:
             storage += "_ "
 
-    else:
-            storage += "_"
+
+    if guess_attempts not in storage:
+            # storage += "_"
             life_points = life_points - 1  #life_points -= 1
             print(f"Remaining Lives:{life_points}")
             if life_points == 0:
-                print("we are in the break loop")
+                print("Game Over!")
                 #break
                 loopy = False
 
             # print("letter not found", storage)
-    print(f"value of staorage is{storage}")
+    print(f"value of storage is{storage}")
 # 5-create an empty list here and then link it to the storage
     #attach = []
     #attach = storage
