@@ -24,7 +24,7 @@ for letter_one in random_words:
 # 4- Compare the players letter to the words letters | letter_two is the storage for the random word chosen
 # Note:  when its right the letter must hold its place in the word
 found_letters = []
-life_points = 10
+life_points = 9
 
 while True:
     storage = " "
@@ -56,7 +56,7 @@ while True:
             else:
                 life_points = life_points - 1  #life_points -= 1
                 print(f"Remaining Lives:{life_points}")
-                print(Tom[0])
+                print(Tom[life_points])
                 if life_points == 0:
                     print("Game Over!")
                     break
