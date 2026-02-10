@@ -4,7 +4,7 @@ while True:
     if game == "no":
         break
     else:
-        print("Continue)
+        print("Continue")
 
 # ask player what do they want to be
 # player_piece = input("What object do you want to be?")
