@@ -1,48 +1,62 @@
 import random
-from random import randint
 life_points = 0
-
-# Function to set difficulty
+# 1. Function to set difficulty (Called once at the start)
 def diffi():
     global life_points
-    game_mode = input("What game mode do you want (Easy or Hard)?:")
+    # .lower() added here to handle case-sensitivity
+    game_mode = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
     if game_mode == "easy":
-    # Life points needs to be set to 10
         life_points = 10
-        print("We are in easy mode!")
-# elif if game_mode == hard
+        print("You have 10 attempts remaining.")
     elif game_mode == "hard":
-    # Life points needs to be set to 5
         life_points = 5
-        print("We are in hard mode!")
+        print("You have 5 attempts remaining.")
+    else:
+        print("Invalid input. Defaulting to Easy mode (10 attempts).")
+        life_points = 10
 
-# Function to check user's guess and reduce by 1 if they get it wrong
-def num_check():
+# 2. Function to check the guess (Called inside the loop)
+def num_check(guess, target):
     global life_points
-    if users_number > rand_num:
-        life_points = life_points - 1 # life_points -= 1
-        print("Your guess is too high!")
-        print(f"Wrong, You have {life_points} guesses left")
-    elif users_number < rand_num:
-        life_points = life_points - 1  # life_points -= 1
-        print("Your guess is too low!")
-        print(f"Wrong, You have {life_points} guesses left")
-# If the users guess is correct break out of the loop and say "you win"
-    elif users_number == rand_num:
-        print("You win the game!")
+    if guess > target:
+        print("Too high.")
+        life_points -= 1
+    elif guess < target:
+        print("Too low.")
+        life_points -= 1
+    else:
+        print(f"You got it! The answer was {target}.")
 
-# choosing a random number between 1 an 100
+print("Welcome to the Number Guessing Game!")
+print("I'm thinking of a number between 1 and 100.")
+
+# Generate the secret number
 rand_num = random.randint(1, 100)
-print(f"Choose a number between (1-100): {rand_num}")
-# function call
+
+# FUNCTION CALL 1: Set the difficulty before starting
 diffi()
-# Let the user guess a number
-# users_number = int(input("What number do you want between 1 and 100? "))
-users_number = int(input("Guess a number between (1-100):"))
-print(f"This is your number: {users_number}")
-# Repeat the guessing functionality if they get it wrong
 
-# Once all wrong  say "you lose "  and break out of  the loop /reveal the number
+# Initialize users_number to something that won't match rand_num immediately
+users_number = 0
 
-num_check()
+# --- GAME LOOP ---
+# Continue as long as they have lives and haven't guessed the right number
+while users_number != rand_num and life_points > 0:
+    print(f"You have {life_points} attempts remaining to guess the number.")
 
+    # Get user input with error handling for invalid numbers
+    try:
+        users_number = int(input("Make a guess: "))
+
+        # FUNCTION CALL 2: Check the number and update life_points
+        num_check(users_number, rand_num)
+
+        if users_number != rand_num and life_points > 0:
+            print("Guess again.")
+
+    except ValueError:
+        print("Invalid input. Please enter a whole number.")
+
+if life_points == 0 and users_number != rand_num:
+    print("You've run out of guesses, you lose.")
+    print(f"The correct number was: {rand_num}")
