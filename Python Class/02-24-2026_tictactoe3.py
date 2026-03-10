@@ -22,3 +22,36 @@
 #         break
 #
 #
+'''
+def check_empty(spot):
+    if game_list[spot] == " ":
+       game_list[spot] = "X"
+    else:
+         continue
+        print("Sorry,this spot is taken already!")
+'''
+
+
+game_list = ["1","2", "3", "4", "5", "6", "7", "8", "9"]
+# print(game_list[3])
+print(game_list[0],"|",game_list[1],"|",game_list[2])
+print("--+---+--")
+print(game_list[3],"|",game_list[4],"|",game_list[5])
+print("--+---+--")
+print(game_list[6],"|",game_list[7],"|",game_list[8])
+# print(game_list)
+
+game = True
+user_play = input("Would you like to play tic-tac-toe?")
+while game:
+    if user_play == "yes":
+        print("continue")
+        game = True
+
+    else:
+        game = False
+
+    empty_spot = int(input("Choose a spot between the numbers (1-9):"))
+
+   # def check_empty(empty_spot):
+
