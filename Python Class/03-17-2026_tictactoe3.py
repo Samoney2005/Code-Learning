@@ -37,14 +37,23 @@ def check_draw():
     for place in game_list:
         if place == " ":
             print("We dont have a draw!")
+        else:
+            game = False
 
 def check_winner():
  # global game = True
     if game_list[0] == game_list[1] == game_list[2] == "X" or \
             game_list[3] == game_list[4] == game_list[5] == "X" or \
-            game_list[6] == game_list[7] == game_list[8] == "X":
+            game_list[6] == game_list[7] == game_list[8] == "X" or \
+            game_list[2] == game_list[4] == game_list[6] == "X" or \
+            game_list[0] == game_list[4] == game_list[8] == "X" or \
+            game_list[0] == game_list[4] == game_list[7] == "X" or \
+            game_list[1] == game_list[4] == game_list[7] == "X" or \
+            game_list[2] == game_list[5] == game_list[8] == "X":
         print("You Win!")
-        # game = False
+        return True
+    else:
+        return False
 
 game_list = [" "," ", " ", " ", " ", " ", " ", " ", " "]
 def board():
@@ -56,13 +65,20 @@ def board():
     print(game_list[6],"|",game_list[7],"|",game_list[8])
    # print(game_list)
 
-user_play = input("Would you like to play tic-tac-toe?")
+user_play = input("Would you like to play tic-tac-toe?").lower()
 while game:
     if user_play == "yes":
      #  print("continue")
         game = True
+    elif user_play == "no":
+        break
+        #game = False
     else:
-        game = False
+        break
+       #game = False
+
+     #print(game)
+    # print(user_play)
 
     empty_spot = int(input("Choose a spot between the numbers (1-9):"))
 
@@ -72,6 +88,19 @@ while game:
     else:
         print("Sorry,this spot is taken already!")
         continue
-    print(game)
+     # print(game)
     # check_empty(empty_spot)
-    check_winner()
+    winner = check_winner()
+     # print(winner)
+
+    if winner == True:
+         game = False
+         print("The game has winner")
+    else:
+        game = True
+        if check_draw == True:
+            print("There is a draw")
+            game = False
+        else:
+            game = True
+
