@@ -33,13 +33,12 @@ def check_empty(spot):
 
 import random
 game = True
-
+# This is for draw
 def check_draw():
-    for place in game_list:
-        if place == " ":
-            game = True
-        else:
-            game = False
+    if " " in game_list:
+        return True
+    else:
+        return False
 
 
 def check_winner():
@@ -54,6 +53,7 @@ def check_winner():
         game_list[2] == game_list[5] == game_list[8] == "X":
         print("You Win!")
         return True
+ # This is checking not registering
     if game_list[0] == game_list[1] == game_list[2] == "O" or \
         game_list[3] == game_list[4] == game_list[5] == "O" or \
         game_list[6] == game_list[7] == game_list[8] == "O" or \
@@ -105,12 +105,13 @@ while game:
     # check_empty(empty_spot)
     winner = check_winner()
      # print(winner)
-
+# if we have winner
     if winner == True:
          game = False
          print("The game has winner")
     else:
         game = True
+        # if we have draw
         if check_draw() == True:
             print("There is a draw")
             game = False
