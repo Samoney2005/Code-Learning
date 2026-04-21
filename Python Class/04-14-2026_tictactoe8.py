@@ -37,8 +37,6 @@ def check_empty(spot):
 '''
 
 
-
-
 round = False
 
 
